@@ -57,3 +57,27 @@
   </rule>
 
 </group>
+
+<group name="windows,defense_evasion,">
+
+  <rule id="100104" level="14">
+    <if_group>windows_logs</if_group>
+    <field name="win.system.eventID">^1102$</field>
+    <description>Windows Security event log cleared — possible evidence removal (T1070.001)</description>
+    <mitre>
+      <id>T1070.001</id>
+    </mitre>
+    <group>indicator_removal,attack.defense_evasion,</group>
+  </rule>
+
+  <rule id="100105" level="14">
+    <if_group>windows_logs</if_group>
+    <field name="win.system.eventID">^104$</field>
+    <description>Windows System event log cleared — possible evidence removal (T1070.001)</description>
+    <mitre>
+      <id>T1070.001</id>
+    </mitre>
+    <group>indicator_removal,attack.defense_evasion,</group>
+  </rule>
+
+</group>
