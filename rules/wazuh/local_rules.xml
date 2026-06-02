@@ -41,3 +41,19 @@
   </rule>
 
 </group>
+
+<group name="windows,sysmon,persistence,">
+
+  <rule id="100103" level="10">
+    <if_sid>61603</if_sid>
+    <field name="win.eventdata.image" type="pcre2">(?i)schtasks\.exe$</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)/create</field>
+    <field name="win.eventdata.commandLine" type="pcre2">(?i)(powershell|cmd\.exe|wscript|mshta|rundll32)</field>
+    <description>Suspicious scheduled task created with script interpreter (T1053.005)</description>
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+    <group>persistence,attack.persistence,</group>
+  </rule>
+
+</group>
