@@ -12,3 +12,16 @@
   </rule>
 
 </group>
+
+<group name="windows,sysmon,credential_access,">
+
+<rule id="100101" level="12">
+    <if_group>sysmon_eid10_detections</if_group>
+    <field name="win.eventdata.targetImage" type="pcre2">(?i)lsass\.exe$</field>
+    <description>Suspicious LSASS memory access — possible credential dumping (T1003.001)</description>
+    <mitre>
+      <id>T1003.001</id>
+    </mitre>
+    <group>credential_access,mimikatz,attack.credential_access,</group>
+  </rule>
+</group>
